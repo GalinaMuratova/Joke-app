@@ -3,19 +3,10 @@ import './LevelTwo.css'
 
 const LevelTwo = () => {
     const [joke, setJoke] = useState('');
-
     const url = 'https://api.chucknorris.io/jokes/random';
 
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch(url);
-
-            if (response.ok) {
-                const newJoke = await response.json();
-                setJoke(newJoke.value);
-            }
-        };
-        fetchData().catch(e => console.error(e));
+        getNewJoke();
     }, []);
 
     const getNewJoke = async () => {
@@ -29,7 +20,6 @@ const LevelTwo = () => {
             console.error(e);
         }
     };
-
 
     return (
         <div className="container">
