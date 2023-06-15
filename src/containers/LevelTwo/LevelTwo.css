@@ -1,6 +1,9 @@
 .container {
+    display: flex;
+    flex-direction: column;
     text-align: center;
-    margin: 20px 0;
+    margin: 20px auto;
+    width: 600px;
     background-color: #cbedff;
     padding: 20px;
     border-radius: 8px;
