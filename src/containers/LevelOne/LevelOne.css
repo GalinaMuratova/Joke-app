@@ -50,6 +50,7 @@
 
 .card-movie {
     display: flex;
+    margin-bottom: 20px;
 }
 
 .input-form-edit {

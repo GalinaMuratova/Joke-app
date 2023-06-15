@@ -2,6 +2,7 @@ import React from 'react';
 import './LevelOne.css'
 import {IMovies} from "../../types";
 import FormAdd from "./FormAdd/FormAdd";
+import MovieBlock from "./MovieBlock/MovieBlock";
 
 interface State {
     movies: IMovies[];
@@ -14,18 +15,18 @@ class LevelOne extends React.Component<{}, State> {
 
     addMovie = (movie: IMovies) => {
         const newMovieList = [...this.state.movies, movie];
-        console.log(newMovieList);
         this.setState((prevState) => ({
             ...prevState,
             movies: newMovieList
-        }))
-        console.log(this.state.movies);
-
+        }));
     };
 
-
-
-    deleteMovie = () => {
+    deleteMovie = (id: string) => {
+        const filteredMovies = this.state.movies.filter(movie => movie.id !== id);
+        this.setState((prevState) => ({
+            ...prevState,
+            movies: filteredMovies
+        }));
     };
 
     editMovie = () => {
@@ -38,10 +39,9 @@ class LevelOne extends React.Component<{}, State> {
                 <FormAdd add={this.addMovie} />
                 <div className="block-movies">
                     <h2>To watch list:  </h2>
-                    <div className='card-movie'>
-                        <input className="input-form-edit"/>
-                        <button className="btn-delete">Delete</button>
-                    </div>
+                    {this.state.movies.map((movie) => (
+                        <MovieBlock key={movie.id} value={movie.title} delete={() =>this.deleteMovie(movie.id) } />
+                    ))}
                 </div>
             </div>
         );
