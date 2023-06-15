@@ -1,36 +1,55 @@
 import React from 'react';
 import './LevelOne.css'
+import {IMovies} from "../../types";
+import FormAdd from "./FormAdd/FormAdd";
 
 interface State {
-  movie: string;
+    movies: IMovies[];
 }
+
 class LevelOne extends React.Component<{}, State> {
     state: State = {
-        movie: ''
+        movies: []
     };
 
-    onSubmitForm (e:React.FormEvent) {
-        e.preventDefault();
-        console.log("form");
-    }
-
-    toMovie = (e: React.ChangeEvent<HTMLInputElement>) => {
+    addMovie = (movie: IMovies) => {
+        const newMovieList = [...this.state.movies, movie];
+        console.log(newMovieList);
         this.setState((prevState) => ({
             ...prevState,
-            movie: e.target.value }))
-        console.log(this.state.movie)
-    }
+            movies: newMovieList
+        }))
+        console.log(this.state.movies);
+
+    };
+
+
+
+    deleteMovie = () => {
+    };
+
+    editMovie = () => {
+
+    };
+
     render() {
         return (
             <div className="container">
-             <form className="form-add" onSubmit={this.onSubmitForm}>
-                 <label className="label-add"  htmlFor="username"></label>
-                 <input className="input-add" type="text" name="movie-name" id="movieName" onChange={this.toMovie}/>
-                 <button className="btn-add" type="submit"> Add</button>
-             </form>
+                <FormAdd add={this.addMovie} />
+                <div className="block-movies">
+                    <h2>To watch list:  </h2>
+                    <div className='card-movie'>
+                        <input className="input-form-edit"/>
+                        <button className="btn-delete">Delete</button>
+                    </div>
+                </div>
             </div>
         );
     }
 }
 
 export default LevelOne;
+
+
+
+
