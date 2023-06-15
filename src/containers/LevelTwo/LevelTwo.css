@@ -1,0 +1,26 @@
+.container {
+    text-align: center;
+    margin: 20px 0;
+    background-color: #cbedff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-next {
+    border: none;
+    background-color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3ms ;
+}
+
+.btn-next:hover {
+    background-color: lightgray;
+}
+
+.btn-next:active {
+    transform: scale(0.9);
+}
