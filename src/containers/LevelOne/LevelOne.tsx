@@ -29,8 +29,17 @@ class LevelOne extends React.Component<{}, State> {
         }));
     };
 
-    editMovie = () => {
-
+    editMovie = (id: string, newTitle: string) => {
+        const updatedMovies = this.state.movies.map(movie => {
+            if (movie.id === id) {
+                return { ...movie, title: newTitle };
+            }
+            return movie;
+        });
+        this.setState((prevState) => ({
+            ...prevState,
+            movies: updatedMovies
+        }));
     };
 
     render() {
@@ -40,7 +49,11 @@ class LevelOne extends React.Component<{}, State> {
                 <div className="block-movies">
                     <h2>To watch list:  </h2>
                     {this.state.movies.map((movie) => (
-                        <MovieBlock key={movie.id} value={movie.title} delete={() =>this.deleteMovie(movie.id) } />
+                        <MovieBlock
+                            key={movie.id}
+                            valueMovie={movie.title}
+                            delete={() =>this.deleteMovie(movie.id)}
+                            edit={(newTitle: string) => this.editMovie(movie.id, newTitle)} />
                     ))}
                 </div>
             </div>

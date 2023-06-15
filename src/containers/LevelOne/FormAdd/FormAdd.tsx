@@ -25,7 +25,7 @@ class FormAdd extends Component<Props, State> {
             this.props.add(newMovie);
             this.setState((prevState) => ({
                 ...prevState,
-                movie: ''
+                movie: '' ,
             }));
         }
     };
@@ -33,8 +33,7 @@ class FormAdd extends Component<Props, State> {
     onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         this.setState((prevState) => ({
             ...prevState,
-            movie: e.target.value
-        }));
+            movie: e.target.value }));
     };
 
     render() {
